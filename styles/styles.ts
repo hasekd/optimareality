@@ -8,9 +8,15 @@ const color = {
   },
   secondary: {
     red: "#CA242C",
+    lightRed: "#cf3a41",
   },
   other: {
     black: "#222222",
+    blue: "#0C7285",
+    grayText: "#69747b",
+    bgGray: "#ebebeb",
+    bgGray2: "#f7f7f7",
+    green: "#5BE9B9",
   },
   hover: {
     blue: "#2491a3",
