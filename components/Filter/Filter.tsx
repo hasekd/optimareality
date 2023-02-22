@@ -1,10 +1,14 @@
 import {
   Box,
   Button,
+  Checkbox,
+  CheckboxGroup,
+  CheckboxProps,
   Flex,
   FlexProps,
   Grid,
   Icon,
+  Input,
   RangeSlider,
   RangeSliderFilledTrack,
   RangeSliderThumb,
@@ -19,8 +23,7 @@ import { RiBuilding2Fill } from "react-icons/ri";
 import React, { useState } from "react";
 import { theme } from "@/styles/styles";
 import { formatCurrency } from "@/utils/formatCurrency";
-import BedsFilter from "./BedsFilter";
-import BathsFilter from "./BathsFilter";
+import DispositionFilter from "./DispositionFilter";
 
 type FilterProps = {
   prop: any;
@@ -33,6 +36,8 @@ type FilterProps = {
   onHandleBedsChange: (beds: number) => void;
   selectedBaths: number;
   onHandleBathsChange: (baths: number) => void;
+  selectedDisposition: string[];
+  onHandleDispositionChange: (e: any) => void;
   onHandleClearFilter: () => void;
 };
 
@@ -41,7 +46,7 @@ const PropertyTypeBoxStyle: FlexProps = {
   justify: "center",
   align: "center",
   bgColor: theme.color.other.bgGray,
-  p: "1rem 0",
+  p: "1rem 2rem",
   gap: "0.3rem",
   cursor: "pointer",
   _hover: { bgColor: "#fff", boxShadow: "0 0 0 1px #000", color: "#000" },
@@ -58,15 +63,13 @@ const Filter = ({
   selectedProp,
   onHandlePropChange,
   onHandlePriceChange,
-  selectedBeds,
-  onHandleBedsChange,
-  selectedBaths,
-  onHandleBathsChange,
+  selectedDisposition,
+  onHandleDispositionChange,
   onHandleClearFilter,
 }: FilterProps) => {
-  let data;
+  let priceData;
 
-  data = prop
+  priceData = prop
     .map((prop: any) => {
       if (prop.attributes.rentOrSell === propType) {
         return prop.attributes.price;
@@ -77,8 +80,8 @@ const Filter = ({
     .sort((a: number, b: number) => a - b)
     .filter((price: any) => price !== 0);
 
-  const minPrice = data[0];
-  const maxPrice = data[data.length - 1];
+  const minPrice = priceData[0];
+  const maxPrice = priceData[priceData.length - 1];
 
   const [value, setValue] = useState([minPrice, maxPrice]);
 
@@ -175,24 +178,13 @@ const Filter = ({
       </Flex>
 
       <Text fontSize={"1.6rem"} fontWeight={500} mt={"1.5rem"}>
-        Místnosti
+        Dispozice
       </Text>
-
-      <Text fontSize={"1.2rem"} m={"0.8rem 0"}>
-        Pokoje
-      </Text>
-      <BedsFilter
-        selectedBeds={selectedBeds}
-        onHandleBedsChange={onHandleBedsChange}
+      <DispositionFilter
+        selectedDisposition={selectedDisposition}
+        onHandleDispositionChange={onHandleDispositionChange}
       />
 
-      <Text fontSize={"1.2rem"} m={"0.8rem 0"}>
-        Koupelny
-      </Text>
-      <BathsFilter
-        selectedBaths={selectedBaths}
-        onHandleBathsChange={onHandleBathsChange}
-      />
       {filteredProp.length <= prop.length - 1 ? (
         <>
           <Button

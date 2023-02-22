@@ -13,6 +13,7 @@ import {
   FormLabel,
   Select,
   Grid,
+  useToast,
 } from "@chakra-ui/react";
 import { theme } from "@/styles/styles";
 import { WatcherSVG } from "@/SVGS/WatcherSVG";
@@ -40,10 +41,9 @@ const PropertyWatcher = () => {
       });
       reset();
       toast({
-        title: "Account created.",
-        description: "We've created your account for you.",
+        title: "Váš email byl úspěšně uložen.",
         status: "success",
-        duration: 9000,
+        duration: 5000,
         isClosable: true,
       });
       return res.data;

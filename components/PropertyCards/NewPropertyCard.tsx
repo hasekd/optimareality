@@ -43,7 +43,9 @@ const NewPropertyCard = ({
 }: PropertyCardProps) => {
   const Icon = chakra(FontAwesomeIcon);
 
-  const srcImage = `http://localhost:1337${image.data.attributes.url}`;
+  const srcImage = image.data.map(
+    (image: any) => `http://localhost:1337${image.attributes.url}`
+  )[0];
 
   return (
     <Link href={"/"}>
@@ -86,7 +88,7 @@ const NewPropertyCard = ({
           >
             <Box>
               <Icon icon={faBed} w={"1.7rem"} h={"1.7rem"} />
-              <Text fontSize={"1.2rem"}>Ložnice</Text>
+              <Text fontSize={"1.2rem"}>Pokoje</Text>
               <Text
                 textColor={theme.color.primary.black}
                 fontWeight={600}

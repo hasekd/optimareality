@@ -39,7 +39,6 @@ const Footer = () => {
     <Box bgColor={theme.color.other.bgGray2}>
       <Flex maxW={"130rem"} m={"0 auto"} flexDir={"column"}>
         <Grid
-          minH={"10vh"}
           gap={"4rem"}
           gridTemplateColumns={{
             base: "1fr",

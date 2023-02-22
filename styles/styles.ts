@@ -1,4 +1,4 @@
-import { extendTheme } from "@chakra-ui/react";
+import { defineStyle, extendTheme } from "@chakra-ui/react";
 
 const color = {
   primary: {

@@ -33,7 +33,11 @@ const CardSection = () => {
       >
         <CardStyle
           numOfProperties={sellProp.length}
-          title={"Nemovitostí k prodeji"}
+          title={
+            sellProp.length > 1 && sellProp.length < 5
+              ? "Nemovitosti k prodeji"
+              : "Nemovitostí k prodeji"
+          }
           bgColor={theme.color.other.blue}
           link={"/prodej"}
           buttonTitle={"Zobrazit nabídku"}
@@ -47,7 +51,11 @@ const CardSection = () => {
         />
         <CardStyle
           numOfProperties={rentProp.length}
-          title={"Nemovitostí k pronájmu"}
+          title={
+            rentProp.length > 1 && rentProp.length < 5
+              ? "Nemovitosti k pronájmu"
+              : "Nemovitostí k pronájmu"
+          }
           bgColor={theme.color.secondary.lightRed}
           link={"/pronajem"}
           buttonTitle={"Zobrazit nabídku"}

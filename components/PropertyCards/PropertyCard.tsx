@@ -28,6 +28,7 @@ type PropertyCardProps = {
   bathrooms: number;
   area: number;
   priceType: string;
+  slug: string;
 };
 
 const PropertyCard = ({
@@ -39,13 +40,16 @@ const PropertyCard = ({
   bathrooms,
   area,
   priceType,
+  slug,
 }: PropertyCardProps) => {
   const Icon = chakra(FontAwesomeIcon);
 
-  const srcImage = `http://localhost:1337${image.data.attributes.url}`;
+  const srcImage = image.data.map(
+    (image: any) => `http://localhost:1337${image.attributes.url}`
+  )[0];
 
   return (
-    <Link href={"/"}>
+    <Link href={"/pronajem/" + slug}>
       <Card maxW="md" boxShadow={theme.shadow.boxShadow}>
         <Image
           loader={() => srcImage}
@@ -85,7 +89,7 @@ const PropertyCard = ({
           >
             <Box>
               <Icon icon={faBed} w={"1.7rem"} h={"1.7rem"} />
-              <Text fontSize={"1.2rem"}>Ložnice</Text>
+              <Text fontSize={"1.2rem"}>Pokoje</Text>
               <Text
                 textColor={theme.color.primary.black}
                 fontWeight={600}
