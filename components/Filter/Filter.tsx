@@ -1,14 +1,9 @@
 import {
-  Box,
   Button,
-  Checkbox,
-  CheckboxGroup,
-  CheckboxProps,
   Flex,
   FlexProps,
   Grid,
   Icon,
-  Input,
   RangeSlider,
   RangeSliderFilledTrack,
   RangeSliderThumb,
@@ -32,10 +27,6 @@ type FilterProps = {
   selectedProp: string;
   onHandlePropChange: (propType: string) => void;
   onHandlePriceChange: (price: number[]) => void;
-  selectedBeds: number;
-  onHandleBedsChange: (beds: number) => void;
-  selectedBaths: number;
-  onHandleBathsChange: (baths: number) => void;
   selectedDisposition: string[];
   onHandleDispositionChange: (e: any) => void;
   onHandleClearFilter: () => void;

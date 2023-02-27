@@ -29,6 +29,7 @@ type PropertyCardProps = {
   area: number;
   priceType: string;
   slug: string;
+  href: string;
 };
 
 const PropertyCard = ({
@@ -41,6 +42,7 @@ const PropertyCard = ({
   area,
   priceType,
   slug,
+  href,
 }: PropertyCardProps) => {
   const Icon = chakra(FontAwesomeIcon);
 
@@ -49,15 +51,27 @@ const PropertyCard = ({
   )[0];
 
   return (
-    <Link href={"/pronajem/" + slug}>
-      <Card maxW="md" boxShadow={theme.shadow.boxShadow}>
+    <Link href={`/${href}/` + slug}>
+      <Card
+        maxW="md"
+        boxShadow={theme.shadow.boxShadow}
+        _hover={{ boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)" }}
+        overflow={"hidden"}
+      >
         <Image
           loader={() => srcImage}
           src={srcImage}
           alt={title}
           width={300}
           height={0}
-          style={{ width: "auto", height: "auto", objectFit: "cover" }}
+          // onMouseOver={(e: any) => (e.target.style.scale = "1.1")}
+          // onMouseLeave={(e: any) => (e.target.style.scale = "1")}
+          style={{
+            width: "auto",
+            height: "auto",
+            objectFit: "cover",
+            transition: "all 0.2s ease-out",
+          }}
         />
         <Box p={"1rem"}>
           <Text fontSize={"1.8rem"} mb={"0.5rem"} fontWeight={500}>

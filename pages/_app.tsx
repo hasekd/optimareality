@@ -1,3 +1,4 @@
+import { SearchInputProvider } from "@/context/SearchInputContext";
 import chakraTheme from "@/styles/styles";
 import { ChakraProvider } from "@chakra-ui/react";
 import { Open_Sans } from "@next/font/google";
@@ -18,9 +19,11 @@ export default function App({ Component, pageProps }: AppProps) {
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
         <ChakraProvider theme={chakraTheme}>
-          <main className={font.className}>
-            <Component {...pageProps} />
-          </main>
+          <SearchInputProvider>
+            <main className={font.className}>
+              <Component {...pageProps} />
+            </main>
+          </SearchInputProvider>
         </ChakraProvider>
       </Hydrate>
       <ReactQueryDevtools />

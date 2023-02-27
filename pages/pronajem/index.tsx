@@ -69,7 +69,7 @@ const RentPage = () => {
 
   return (
     <Layout>
-      <Box maxW={"130rem"} m={"0 auto"} p={"0 2rem"}>
+      <Box maxW={"130rem"} m={"0 auto"} p={"0 1rem"}>
         <Box maxW={"12.9rem"} m={"3rem auto 0"}>
           <Heading
             fontSize={"3rem"}
@@ -92,10 +92,6 @@ const RentPage = () => {
             selectedProp={selectedProp}
             onHandlePropChange={handlePropChange}
             onHandlePriceChange={handlePriceChange}
-            selectedBeds={selectedBeds}
-            onHandleBedsChange={handleBedsChange}
-            selectedBaths={selectedBaths}
-            onHandleBathsChange={handleBathsChange}
             selectedDisposition={selectedDisposition}
             onHandleDispositionChange={handleDispositionChange}
             onHandleClearFilter={handleClearFilter}
@@ -114,6 +110,7 @@ const RentPage = () => {
                     key={prop.id}
                     {...prop.attributes}
                     priceType={"Kč /měsíc"}
+                    href={"pronajem"}
                   />
                 );
               }

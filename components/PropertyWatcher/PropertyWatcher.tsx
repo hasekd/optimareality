@@ -20,6 +20,7 @@ import { WatcherSVG } from "@/SVGS/WatcherSVG";
 import { useForm, SubmitHandler } from "react-hook-form";
 import React from "react";
 import axios from "axios";
+import PropertyDetail from "../PropertyDetail/PropertyDetail";
 
 type Inputs = {
   email: string;

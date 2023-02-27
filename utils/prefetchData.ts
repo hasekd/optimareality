@@ -16,3 +16,16 @@ export const prefetchData = async () => {
 
   return queryClient;
 };
+
+export const fetchPropBySlug = async (slug: string | string[] | undefined) => {
+  try {
+    const res = await fetch(
+      "http://localhost:1337/api/property-cards/" + slug + "?populate=*"
+    );
+
+    const data = await res.json();
+    return data.data;
+  } catch (error) {
+    console.error(error);
+  }
+};

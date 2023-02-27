@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-const Hero = () => {
+const HeroImage = () => {
   return (
     <Image
       src={"/images/header-house.jpeg"}
@@ -13,4 +13,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default HeroImage;

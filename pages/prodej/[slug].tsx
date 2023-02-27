@@ -20,19 +20,14 @@ import ContactForm from "@/components/PropertyDetail/ContactForm";
 import ImageModal from "@/components/ImageModal/ImageModal";
 import PropertyParams from "@/components/PropertyDetail/PropertyParams";
 
-type PropertyDetailProps = {
-  queryKey: string;
-  priceType: string;
-};
-
-const PropertyDetail = ({ priceType, queryKey }: PropertyDetailProps) => {
+const PropertyDetail = () => {
   const [imageIndex, setImageIndex] = useState(0);
 
   const { query } = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const { data, isLoading, isError, error } = useQuery(
-    ["rent", query.slug],
+    ["sell", query.slug],
     () => fetchPropBySlug(query.slug)
   );
 
@@ -147,7 +142,7 @@ const PropertyDetail = ({ priceType, queryKey }: PropertyDetailProps) => {
             fontWeight={500}
             mb={"1.5rem"}
           >
-            {formatCurrency(data.attributes.price)} Kč /měsíc
+            {formatCurrency(data.attributes.price)} Kč
           </Text>
 
           <Grid
